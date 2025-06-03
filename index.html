@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Szyfr Vigenère</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Szyfrowanie Vigenère</h1>
+        <form method="POST" action="cipher.php" onsubmit="return validateForm()">
+            <label for="text">Tekst:</label>
+            <textarea name="text" id="text" required></textarea>
+
+            <label for="key">Klucz:</label>
+            <input type="text" name="key" id="key" required oninput="checkKeyStrength()">
+
+            <label for="action">Działanie:</label>
+            <select name="action" id="action">
+                <option value="encrypt">Szyfruj</option>
+                <option value="decrypt">Deszyfruj</option>
+            </select>
+
+            <div id="keyStrength"></div>
+            <input type="submit" value="Wykonaj">
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
