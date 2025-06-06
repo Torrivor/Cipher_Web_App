@@ -3,13 +3,11 @@ function validateForm() {
     let cipher = document.getElementById('cipher').value;
 
     if (cipher === 'caesar') {
-        // Sprawdź, czy klucz to liczba całkowita
         if (!/^-?\d+$/.test(key)) {
             alert("Wybrano szyfr Cezara. Klucz musi być liczbą całkowitą (np. 3 lub -3).");
             return false;
         }
     } else if (cipher === 'vigenere') {
-        // Sprawdź, czy klucz to tylko litery
         if (!/^[a-zA-Z]+$/.test(key)) {
             alert("Wybrano szyfr Vigenère. Klucz może zawierać tylko litery (bez cyfr, spacji i znaków specjalnych).");
             return false;
