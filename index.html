@@ -2,18 +2,25 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Szyfr Vigenère</title>
+    <title>Szyfrowanie</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Szyfrowanie Vigenère</h1>
+        <h1>Szyfrowanie</h1>
         <form method="POST" action="cipher.php" onsubmit="return validateForm()">
             <label for="text">Tekst:</label>
             <textarea name="text" id="text" required></textarea>
 
             <label for="key">Klucz:</label>
             <input type="text" name="key" id="key" required oninput="checkKeyStrength()">
+            <div id="keyInfo" style="margin-bottom:10px; color:#2a7ae2; font-size:0.95em;"></div>
+
+            <label for="cipher">Szyfr:</label>
+            <select name="cipher" id="cipher" onchange="showKeyInfo()">
+                <option value="caesar">Cezara</option>
+                <option value="vigenere">Vigenère</option>
+            </select>
 
             <label for="action">Działanie:</label>
             <select name="action" id="action">
@@ -25,6 +32,18 @@
             <input type="submit" value="Wykonaj">
         </form>
     </div>
+    <script>
+        function showKeyInfo() {
+            const cipher = document.getElementById('cipher').value;
+            const keyInfo = document.getElementById('keyInfo');
+            if (cipher === 'caesar') {
+                keyInfo.textContent = "Klucz: liczba całkowita (np. 3)";
+            } else {
+                keyInfo.textContent = "Klucz: dowolne słowo lub fraza (np. TAJNY)";
+            }
+        }
+        document.addEventListener('DOMContentLoaded', showKeyInfo);
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
